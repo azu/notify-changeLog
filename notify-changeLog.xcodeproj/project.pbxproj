@@ -48,6 +48,7 @@
 		17B5C9A5163335A6F7C9AEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		17B5CA64F43DBD8EA2235D7F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		17B5CB52A55DA39B33B63F8D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		17B5CC48DC2F071DB49CA4A0 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = readme.md; sourceTree = "<group>"; };
 		17B5CCCFD858AAB72B8DB595 /* SenTestCase+MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+MethodSwizzling.m"; sourceTree = "<group>"; };
 		17B5CCE083CFF19AF613E011 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		17B5CD1E4B0E84629A504D70 /* ChangeLog_example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = ChangeLog_example.plist; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 				17B5C908D0CE6A50FC483213 /* Frameworks */,
 				17B5C1C3E1F639D16D7E6461 /* notify-changeLog */,
 				336FD4B3FD2148179828E34D /* Pods-Tests.xcconfig */,
+				17B5CC48DC2F071DB49CA4A0 /* readme.md */,
 			);
 			sourceTree = "<group>";
 		};
