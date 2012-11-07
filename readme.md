@@ -2,6 +2,8 @@
 
 notify users about new features(change log) in the app the first time they launch after an update.
 
+simple!
+
 # How to Use
 
 1. D&D [NotifyChangeLog](https://github.com/azu/notify-changeLog/tree/master/notify-changeLog/NotifyChangeLog "NotifyChangeLog") directory into your project.
@@ -9,3 +11,7 @@ notify users about new features(change log) in the app the first time they launc
 3. Call ``[NotifyChangeLog show];`` - show change log in UIAlertView
 
 also get change log - call ``[NotifyChangeLog changeLogAtCurrent];``
+
+## similarity
+
+* [nicklockwood/iVersion](https://github.com/nicklockwood/iVersion "nicklockwood/iVersion")
