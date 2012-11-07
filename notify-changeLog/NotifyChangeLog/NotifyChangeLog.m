@@ -73,11 +73,14 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
     if (message == nil || [message length] == 0){
         return; nil;
     }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ChngeLog"
-        message:message
-        delegate:nil cancelButtonTitle:@"OK"
-        otherButtonTitles:nil];
-    [alert show];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ChngeLog"
+            message:message
+            delegate:nil cancelButtonTitle:@"OK"
+            otherButtonTitles:nil];
+        [alert show];
+    });
 }
 
 + (void)saveLaunchedVersion {
