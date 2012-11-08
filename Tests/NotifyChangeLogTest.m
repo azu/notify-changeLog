@@ -97,7 +97,7 @@
             assertThat(message, equalTo([changeLog objectForKey:@"1.1"]));
             // changeLogAtCurrent does not side effect
             NSString *message_2 = [NotifyChangeLog changeLogAtCurrent];
-            assertThat(message, equalTo([changeLog objectForKey:@"1.1"]));
+            assertThat(message_2, equalTo([changeLog objectForKey:@"1.1"]));
             // save
             [NotifyChangeLog saveCurrentVersion];
             NSString *message_nil = [NotifyChangeLog changeLogAtCurrent];
