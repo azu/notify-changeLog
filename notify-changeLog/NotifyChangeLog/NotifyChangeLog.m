@@ -12,15 +12,6 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
 
 }
 
-+ (void)initialize {
-    [super initialize];
-
-    // initial version
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-    kChangeLogCurrentVersion : @"1.0"
-    }];
-}
-
 // load form ChangeLog.plist
 + (NSDictionary *)loadChangeLog {
     NSString *path = [[NSBundle bundleForClass:self] pathForResource:@"ChangeLog" ofType:@"plist"];
@@ -39,7 +30,8 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
 + (BOOL)isFirstLaunchInCurrentVersion {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *savedVersion = [defaults objectForKey:kChangeLogCurrentVersion];
-    if ([savedVersion compare:[self appVersion]
+    // first in all time or already launch(save) current version
+    if (savedVersion == nil || [savedVersion compare:[self appVersion]
         options:NSNumericSearch] == NSOrderedSame){
         return NO;
     }
@@ -59,19 +51,19 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
     return nil;
 }
 
-// show change log with alertView - with save launch version
-+ (void)show {
+// showAndSave change log with alertView - with save launch version
++ (void)showAndSave {
     if ([self isFirstLaunchInCurrentVersion]){
         [self showDialog];
     }
-    [self saveLaunchedVersion];
+    [self saveCurrentVersion];
 }
 
 + (void)showDialog {
     NSString *message = [self changeLogAtCurrent];
     // guard
     if (message == nil || [message length] == 0){
-        return; nil;
+        return;
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -83,7 +75,7 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
     });
 }
 
-+ (void)saveLaunchedVersion {
++ (void)saveCurrentVersion {
     NSString *version = [self appVersion];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:version forKey:kChangeLogCurrentVersion];

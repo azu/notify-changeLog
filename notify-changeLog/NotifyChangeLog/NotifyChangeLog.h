@@ -13,9 +13,9 @@ extern NSString *const kChangeLogCurrentVersion;
 
 + (NSString *)changeLogAtCurrent;
 
-+ (void)show; // with save
++ (void)showAndSave; // with save
 
-+ (void)saveLaunchedVersion;
++ (void)saveCurrentVersion;
 
 
 @end
