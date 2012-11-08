@@ -31,7 +31,7 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
 // current app's version
 + (NSString *)appVersion {
     NSString *version = [[[NSBundle bundleForClass:self] infoDictionary]
-                                    objectForKey:(NSString *) kCFBundleVersionKey];
+                                    objectForKey:@"CFBundleShortVersionString"];
 
     return version;
 }
