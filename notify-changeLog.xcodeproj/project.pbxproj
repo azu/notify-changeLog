@@ -125,7 +125,6 @@
 				17B5CA64F43DBD8EA2235D7F /* ViewController.m */,
 				17B5C0560C87DA833A22A7E1 /* NotifyChangeLog */,
 			);
-			lastKnownFileType = text;
 			path = "notify-changeLog";
 			sourceTree = "<group>";
 		};

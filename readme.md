@@ -11,7 +11,7 @@ simple!
 3. Call ``[NotifyChangeLog showAndSave];`` - show change log in UIAlertView
 
 also get change log - call ``[NotifyChangeLog changeLogAtCurrent];``
-(with have to manually save - ``[NotifyChangeLog saveCurrentVersion])
+(with have to manually save - ``[NotifyChangeLog saveCurrentVersion]`` )
 
 Add code for insurance :
 
@@ -19,6 +19,10 @@ Add code for insurance :
     {
         [NotifyChangeLog saveCurrentVersion];
     }
+
+# Example
+
+[azu/NotifyChangeLogExample · GitHub](https://github.com/azu/NotifyChangeLogExample "azu/NotifyChangeLogExample · GitHub")
 
 ## similarity
 
