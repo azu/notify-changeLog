@@ -4,9 +4,17 @@ notify users about new features(change log) in the app the first time they launc
 
 simple!
 
+# Installation
+
+> pod 'NotifyChangeLog', :podspec => "https://raw.github.com/azu/notify-changeLog/master/NotifyChangeLog.podspec"
+
+or
+
+D&D [NotifyChangeLog](https://github.com/azu/notify-changeLog/tree/master/notify-changeLog/NotifyChangeLog "NotifyChangeLog") directory into your project.
+
+
 # How to Use
 
-1. D&D [NotifyChangeLog](https://github.com/azu/notify-changeLog/tree/master/notify-changeLog/NotifyChangeLog "NotifyChangeLog") directory into your project.
 2. Write change log to ``ChangeLog.plist``
 3. Call ``[NotifyChangeLog showAndSave];`` - show change log in UIAlertView
 
