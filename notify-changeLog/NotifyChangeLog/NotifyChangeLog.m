@@ -39,8 +39,8 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
 }
 
 // get change log which match current app version
-+ (NSString *)changeLogAtCurrent {
-    if (![self isFirstLaunchInCurrentVersion]){
++ (NSString *)changeLogAtCurrent:(BOOL)force {
+    if (!force && ![self isFirstLaunchInCurrentVersion]){
         return nil;
     }
     NSDictionary *changeLog = [self loadChangeLog];
@@ -49,6 +49,9 @@ NSString *const kChangeLogCurrentVersion = @"kChangeLogCurrentVersion";
         return message;
     }
     return nil;
+}
++ (NSString *)changeLogAtCurrent {
+    return [self changeLogAtCurrent:NO];
 }
 
 // showAndSave change log with alertView - with save launch version

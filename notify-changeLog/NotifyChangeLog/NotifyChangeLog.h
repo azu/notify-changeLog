@@ -11,6 +11,8 @@ extern NSString *const kChangeLogCurrentVersion;
 
 + (BOOL)isFirstLaunchInCurrentVersion;
 
++ (NSString *)changeLogAtCurrent:(BOOL) force;
+
 + (NSString *)changeLogAtCurrent;
 
 + (void)showAndSave; // with save

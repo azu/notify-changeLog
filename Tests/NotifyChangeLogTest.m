@@ -34,6 +34,7 @@
     NSString *version = [defaults objectForKey:kChangeLogCurrentVersion];
     assertThat(version, equalTo(@"1.0"));
 }
+
 // アプリをインストールしてから初めての起動した時
 - (void)testLaunchAtAllTheFirstTime {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -43,12 +44,13 @@
     // 一番最初に更新履歴は出したくないので、Noが帰る
     assertThatBool([NotifyChangeLog isFirstLaunchInCurrentVersion], equalToBool(NO));
 }
+
 // 1.0 -> 1.1
 - (void)testIsUpdateVersion {
 
     [self setDefaultVersion];
 
-    [self swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+    [self swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
         return @"1.1";
     } executeBlock:^{
         // isFirstLaunchInCurrentVersion does not side effect.
@@ -64,7 +66,7 @@
 
     __block BOOL isShownDialog = NO;
     __weak NotifyChangeLogTest *test = self;
-    [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+    [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
         return @"1.1";
     } executeBlock:^{
         [test swizzleMethod:@selector(showDialog) inClass:[NotifyChangeLog class] withBlock:^id {
@@ -81,15 +83,15 @@
 - (void)testChangeLog {
     [self setDefaultVersion];
     NSDictionary *changeLog = @{
-    @"1.1":@"change log 1.1\n message",
-    @"1.2":@"change log 1.2\n message"
+            @"1.1" : @"change log 1.1\n message",
+            @"1.2" : @"change log 1.2\n message"
     };
     __weak NotifyChangeLogTest *test = self;
     [test swizzleMethod:@selector(loadChangeLog) inClass:[NotifyChangeLog class] withBlock:^id {
         return changeLog;
     } executeBlock:^{
         // ver 1.1
-        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
             return @"1.1";
         } executeBlock:^{
             // get 1.1 change log message
@@ -104,7 +106,7 @@
             assertThat(message_nil, nilValue());
         }];
         // ver 1.2
-        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
             return @"1.2";
         } executeBlock:^{
             // get 1.2 change log message
@@ -112,7 +114,7 @@
             assertThat(message, equalTo([changeLog objectForKey:@"1.2"]));
         }];
         // not exist version
-        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
             return @"9.9";
         } executeBlock:^{
             // get nil
@@ -123,21 +125,41 @@
 }
 
 // 初めてインストールしたのが1.1で初回の起動時
-- (void)testChangeLogAtAllTheFirstTime{
+- (void)testChangeLogAtAllTheFirstTime {
     NSDictionary *changeLog = @{
-    @"1.1":@"change log 1.1\n message"
+            @"1.1" : @"change log 1.1\n message"
     };
     __weak NotifyChangeLogTest *test = self;
     [test swizzleMethod:@selector(loadChangeLog) inClass:[NotifyChangeLog class] withBlock:^id {
         return changeLog;
     } executeBlock:^{
         // ver 1.1
-        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t) ^{
+        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
             return @"1.1";
         } executeBlock:^{
             // get 1.1 change log message
             NSString *message = [NotifyChangeLog changeLogAtCurrent];
-            assertThat(message , nilValue());
+            assertThat(message, nilValue());
+        }];
+    }];
+}
+
+- (void)testChangeLogForce {
+    NSDictionary *changeLog = @{
+            @"1.1" : @"change log 1.1\n message"
+    };
+    __weak NotifyChangeLogTest *test = self;
+    [test swizzleMethod:@selector(loadChangeLog) inClass:[NotifyChangeLog class] withBlock:^id {
+        return changeLog;
+    } executeBlock:^{
+        // ver 1.1
+        [test swizzleMethod:@selector(appVersion) inClass:[NotifyChangeLog class] withBlock:(block_t)^{
+            return @"1.1";
+        } executeBlock:^{
+            // get 1.1 change log message
+            NSString *message = [NotifyChangeLog changeLogAtCurrent:YES];
+            id expect = [changeLog objectForKey:@"1.1"];
+            assertThat(message, equalTo(expect));
         }];
     }];
 }
