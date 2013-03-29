@@ -28,6 +28,24 @@ Add code for insurance :
         [NotifyChangeLog saveCurrentVersion];
     }
 
+
+Methods :
+
+    @interface NotifyChangeLog : NSObject
+
+    + (BOOL)isFirstLaunchInCurrentVersion;
+
+    + (NSString *)changeLogAtCurrent:(BOOL) force;
+
+    + (NSString *)changeLogAtCurrent;
+
+    + (void)showAndSave; // with save
+
+    + (void)saveCurrentVersion;
+
+    @end
+
+
 # Example
 
 [azu/NotifyChangeLogExample · GitHub](https://github.com/azu/NotifyChangeLogExample "azu/NotifyChangeLogExample · GitHub")
