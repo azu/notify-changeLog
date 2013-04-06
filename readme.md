@@ -1,5 +1,8 @@
-# What is this?
+# Build Status
 
+[![Build Status](https://travis-ci.org/azu/notify-changeLog.png?branch=master)](https://travis-ci.org/azu/notify-changeLog)
+
+# What is this?
 notify users about new features(change log) in the app the first time they launch after an update.
 
 simple!
