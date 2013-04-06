@@ -34,7 +34,7 @@ BOOTSTRAP="$SCRIPT_DIR/bootstrap"
 DEFAULT_TARGETS=
 
 # Extra build settings to pass to xcodebuild.
-XCODEBUILD_SETTINGS="TEST_AFTER_BUILD=YES"
+XCODEBUILD_SETTINGS="ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES"
 
 ##
 ## Build Process
@@ -73,9 +73,9 @@ run_xcodebuild ()
 {
     local scheme=$1
 
-    if [ -n "$XCWORKSPACE" ]
+    if [h -n "$XCWORKSPACE" ]
     then
-        xcodebuild -workspace "$XCWORKSPACE" -scheme "$scheme" -configuration "$XCCONFIGURATION" build OBJROOT="$PWD/build" SYMROOT="$PWD/build" $XCODEBUILD_SETTINGS
+        xcodebuild -workspace "$XCWORKSPACE" -scheme "$scheme" -sdk iphonesimulator -configuration "$XCCONFIGURATION" clean build OBJROOT="$PWD/build" SYMROOT="$PWD/build" $XCODEBUILD_SETTINGS
     else
         xcodebuild -scheme "$scheme" -configuration "$XCCONFIGURATION" build OBJROOT="$PWD/build" SYMROOT="$PWD/build" $XCODEBUILD_SETTINGS
     fi
