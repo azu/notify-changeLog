@@ -21,7 +21,7 @@
         inClass:(Class)aOriginalClass
         withMethod:(SEL)aNewMethod
         fromClass:(Class)aNewClass
-        executeBlock:(void (^)(void))aBlock {
+        executeBlock:(void (^)())aBlock {
     Method originalMethod = class_getClassMethod(aOriginalClass, aOriginalMethod);
     Method mockMethod = class_getClassMethod(aNewClass, aNewMethod);
     method_exchangeImplementations(originalMethod, mockMethod);
@@ -32,7 +32,7 @@
 - (void)swizzleMethod:(SEL)aOriginalMethod
         inClass:(Class)aOriginalClass
         withBlock:(block_t)aNewBlock
-        executeBlock:(void (^)(void))aBlock {
+        executeBlock:(void (^)())aBlock {
     Method originalMethod = class_getClassMethod(aOriginalClass, aOriginalMethod);
     IMP imp_original = method_getImplementation(originalMethod);
     // exchange

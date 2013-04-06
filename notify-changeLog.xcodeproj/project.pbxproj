@@ -358,8 +358,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "notifyChangeLog/notify-changeLog-Prefix.pch";
-				INFOPLIST_FILE = "notifyChangeLog/notify-changeLog-Info.plist";
+				GCC_PREFIX_HEADER = "notify-changeLog/notify-changeLog-Prefix.pch";
+				INFOPLIST_FILE = "notify-changeLog/notify-changeLog-Info.plist";
 				PRODUCT_NAME = "notify-changeLog";
 				WRAPPER_EXTENSION = app;
 			};
@@ -419,8 +419,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "notifyChangeLog/notify-changeLog-Prefix.pch";
-				INFOPLIST_FILE = "notifyChangeLog/notify-changeLog-Info.plist";
+				GCC_PREFIX_HEADER = "notify-changeLog/notify-changeLog-Prefix.pch";
+				INFOPLIST_FILE = "notify-changeLog/notify-changeLog-Info.plist";
 				PRODUCT_NAME = "notify-changeLog";
 				WRAPPER_EXTENSION = app;
 			};
