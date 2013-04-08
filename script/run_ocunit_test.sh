@@ -10,7 +10,7 @@ cd "$SCRIPT_DIR/.."
 # The build configuration to use.
 if [ -z "$XCCONFIGURATION" ]
 then
-    XCCONFIGURATION="Release"
+    XCCONFIGURATION="Debug"
 fi
 
 # The workspace to build.
@@ -75,10 +75,9 @@ run_xcodebuild ()
 
     if [ -n "$XCWORKSPACE" ]
     then
-        \
-        xcodebuild -workspace "$XCWORKSPACE" -scheme "$scheme" -sdk iphonesimulator -configuration "$XCCONFIGURATION" clean build $XCODEBUILD_SETTINGS
+        xcodebuild -workspace "$XCWORKSPACE" -scheme "$scheme" -configuration "$XCCONFIGURATION" -sdk iphonesimulator build OBJROOT="$PWD/build" SYMROOT="$PWD/build" $XCODEBUILD_SETTINGS
     else
-        xcodebuild -scheme "$scheme" -configuration "$XCCONFIGURATION" build OBJROOT="$PWD/build" SYMROOT="$PWD/build" $XCODEBUILD_SETTINGS
+        xcodebuild -scheme "$scheme" -configuration "$XCCONFIGURATION" build OBJROOT="$PWD/build" SYMROOT="$PWD/build" -sdk iphonesimulator $XCODEBUILD_SETTINGS
     fi
 
     local status=$?
